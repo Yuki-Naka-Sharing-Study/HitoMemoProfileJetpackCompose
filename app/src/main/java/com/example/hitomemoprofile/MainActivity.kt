@@ -3,7 +3,6 @@ package com.example.hitomemoprofile
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -99,15 +98,15 @@ fun ProfileRow(item: ProfileItem) {
                     .height(20.dp)
                     .align(Alignment.CenterStart)
             )
-            Image(
-                painter = painterResource(id = R.drawable.ic_launcher_foreground), // 画像リソースIDを適宜変更
-                contentDescription = null,
-                modifier = Modifier
-                    .size(20.dp)
-                    .size(20.dp)
-                    .align(Alignment.CenterEnd)
-                    .padding(end = 4.dp)
-            )
+            if (item.hasImage) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_launcher_foreground), // 画像リソースIDを適宜変更
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(24.dp)
+                        .align(Alignment.CenterEnd)
+                )
+            }
         }
     }
 }
