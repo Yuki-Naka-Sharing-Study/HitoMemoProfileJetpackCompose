@@ -21,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import java.time.format.TextStyle
 
 
 data class ProfileItem(val label: String, val value: String, val hasImage: Boolean = false)
@@ -94,7 +95,10 @@ fun ProfileRow(item: ProfileItem) {
             TextField(
                 value = text,
                 onValueChange = { text = it },
-                placeholder = { Text(text = item.value) },
+                placeholder = { Text(
+                    text = item.value,
+                    style = androidx.compose.ui.text.TextStyle(fontSize = 16.sp)
+                ) },
                 modifier = Modifier
                     .width(240.dp)
                     .height(52.dp)
