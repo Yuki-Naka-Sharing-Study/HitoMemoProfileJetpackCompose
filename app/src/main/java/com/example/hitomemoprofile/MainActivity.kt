@@ -73,7 +73,7 @@ fun ProfileList(items: List<ProfileItem>) {
 
 @Composable
 fun ProfileRow(item: ProfileItem) {
-    var text by remember { mutableStateOf(item.value) }
+    var text by remember { mutableStateOf("") }
     Row(
         modifier = Modifier
             .fillMaxWidth()
