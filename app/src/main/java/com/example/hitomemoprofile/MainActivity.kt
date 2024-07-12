@@ -86,29 +86,28 @@ fun ProfileRow(item: ProfileItem) {
             text = item.label,
             fontSize = 16.sp,
             modifier = Modifier
-                .width(120.dp)
+                .width(100.dp)
                 .height(20.dp)
         )
-        TextField(
-            value = text,
-            onValueChange = { text = it },
-            placeholder = { Text(text = item.value) },
-            modifier = Modifier
-                .width(220.dp)
-                .height(20.dp)
-                .align(Alignment.CenterVertically)
-        )
-        if (item.hasImage) {
-            Spacer(modifier = Modifier.weight(1f))
+        Box {
+            TextField(
+                value = text,
+                onValueChange = { text = it },
+                placeholder = { Text(text = item.value) },
+                modifier = Modifier
+                    .width(240.dp)
+                    .height(20.dp)
+                    .align(Alignment.CenterStart)
+            )
             Image(
                 painter = painterResource(id = R.drawable.ic_launcher_foreground), // 画像リソースIDを適宜変更
                 contentDescription = null,
-                modifier = Modifier.size(24.dp)
-                    .size(24.dp)
-                    .align(Alignment.CenterVertically)
+                modifier = Modifier
+                    .size(20.dp)
+                    .size(20.dp)
+                    .align(Alignment.CenterEnd)
+                    .padding(end = 4.dp)
             )
-        } else {
-            Spacer(modifier = Modifier.weight(1f))
         }
     }
 }
