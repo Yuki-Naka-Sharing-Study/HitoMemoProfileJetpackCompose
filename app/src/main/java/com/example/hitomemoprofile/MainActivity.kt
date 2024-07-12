@@ -3,6 +3,7 @@ package com.example.hitomemoprofile
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -17,6 +18,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -34,7 +36,7 @@ val profileItems = listOf(
     ProfileItem("住所", "東京都", true),
     ProfileItem("職業", "エンジニア"),
     ProfileItem("関係", "会社の同僚"),
-    ProfileItem("電話番号", "080-6154-8216", true),
+    ProfileItem("電話番号", "080-1234-1234", true),
     ProfileItem("Email", "taro@example.com", true),
     ProfileItem("X", "@tanakataro", true),
     ProfileItem("Instagram", "@tanakataro", true),
@@ -78,25 +80,35 @@ fun ProfileRow(item: ProfileItem) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp),
-        horizontalArrangement = Arrangement.SpaceBetween
+        horizontalArrangement = Arrangement.SpaceBetween, Alignment.CenterVertically
     ) {
         Text(
             text = item.label,
-            fontSize = 18.sp,
-            modifier = Modifier.weight(1f)
+            fontSize = 16.sp,
+            modifier = Modifier
+                .width(120.dp)
+                .height(20.dp)
         )
         TextField(
             value = text,
             onValueChange = { text = it },
             placeholder = { Text(text = item.value) },
-            modifier = Modifier.weight(2f)
+            modifier = Modifier
+                .width(220.dp)
+                .height(20.dp)
+                .align(Alignment.CenterVertically)
         )
         if (item.hasImage) {
+            Spacer(modifier = Modifier.weight(1f))
             Image(
                 painter = painterResource(id = R.drawable.ic_launcher_foreground), // 画像リソースIDを適宜変更
                 contentDescription = null,
                 modifier = Modifier.size(24.dp)
+                    .size(24.dp)
+                    .align(Alignment.CenterVertically)
             )
+        } else {
+            Spacer(modifier = Modifier.weight(1f))
         }
     }
 }
