@@ -63,6 +63,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ProfileList(items: List<ProfileItem>) {
+    // 町田さんの助言曰く、「Column」でも実装可能かもとのこと。
+
     LazyColumn(
         modifier = Modifier.padding(16.dp)
     ) {
@@ -79,7 +81,7 @@ fun ProfileRow(item: ProfileItem) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp),
-        horizontalArrangement = Arrangement.SpaceBetween, Alignment.CenterVertically
+        horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
             text = item.label,
@@ -95,7 +97,7 @@ fun ProfileRow(item: ProfileItem) {
                 placeholder = { Text(text = item.value) },
                 modifier = Modifier
                     .width(240.dp)
-                    .height(20.dp)
+                    .height(52.dp)
                     .align(Alignment.CenterStart)
             )
             if (item.hasImage) {
